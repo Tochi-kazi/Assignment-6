@@ -68,7 +68,7 @@ public class BlackJack {
 
 	  
 	  if(arr[rand1] == ("Spades")) {
-		  System.out.print("Your cards are Spades ");
+		  System.out.print("You: Spades ");
 		  //check if they picked K, Q or J 
 		  if (Spades.get(0) == "J" ||  Spades.get(0) == "Q" || Spades.get(0) == "K") {
 			  System.out.println(Spades.remove(0));
@@ -85,7 +85,7 @@ public class BlackJack {
 		  
 	  //if the card is  a Hearts  card
 	  }else if (arr[rand1] == ("Hearts")) {
-		  System.out.print("Your cards are Hearts ");
+		  System.out.print("You: Hearts ");
 		  if (Hearts.get(0) == "J" ||  Hearts.get(0) == "Q" || Hearts.get(0) == "K") {
 			  System.out.println(Hearts.remove(0));
 			  PlayerTotal += 10;
@@ -98,7 +98,7 @@ public class BlackJack {
 		  }
 		//if the card is  a Cloud  card  
 	  }else if (arr[rand1] == ("Clouds")) {
-		  System.out.print("Your cards are Clouds ");
+		  System.out.print("You: Clouds ");
 		  if (Clouds.get(0) == "J" ||  Clouds.get(0) == "Q" || Clouds.get(0) == "K") {
 			  System.out.println(Clouds.remove(0));
 			  PlayerTotal += 10;
@@ -112,7 +112,7 @@ public class BlackJack {
 		  }
 		//if the card is  a Block  card  
 	  }else if (arr[rand1] == ("Block")) {
-		  System.out.print("Your cards are Block ");
+		  System.out.print("You: Block ");
 		  if (Block.get(0) == "J" ||  Block.get(0) == "Q" || Block.get(0) == "K") {
 			  System.out.println(Block.remove(0));
 			  PlayerTotal += 10;
@@ -128,11 +128,13 @@ public class BlackJack {
 	  }else {
 		  System.out.println("Unknown" + rand1 );
 	  }
+	  
 	  if (count < 1) {
 		  count++;
 		  Player();
 	  }else {
-		  System.out.println("Your total is " + PlayerTotal); 
+		  System.out.println("Your total: " + PlayerTotal);
+		  System.out.println();
 	  }
 	  
 	    
@@ -144,7 +146,7 @@ public class BlackJack {
 	  
 	  if (DealerTotal <= 16) {
 		  if(arr[rand2] == ("Spades")) {
-			  System.out.print("Dealers Cards are ");
+			  System.out.print("Dealers: ");
 			  //check if they picked K, Q or J 
 			  if (Spades.get(0) == "J" ||  Spades.get(0) == "Q" || Spades.get(0) == "K") {
 				  System.out.println(Spades.remove(0));
@@ -161,7 +163,7 @@ public class BlackJack {
 			  
 		  //if the card is  a Hearts  card
 		  }else if (arr[rand2] == ("Hearts")) {
-			  System.out.print("Dealers Cards ares ");
+			  System.out.print("Dealer: Hearts ");
 			  if (Hearts.get(0) == "J" ||  Hearts.get(0) == "Q" || Hearts.get(0) == "K") {
 				  System.out.println(Hearts.remove(0));
 				  DealerTotal += 10;
@@ -174,7 +176,7 @@ public class BlackJack {
 			  }
 			//if the card is  a Cloud  card  
 		  }else if (arr[rand2] == ("Clouds")) {
-			  System.out.print("Dealers Cards are ");
+			  System.out.print("Dealer: Clouds ");
 			  if (Clouds.get(0) == "J" ||  Clouds.get(0) == "Q" || Clouds.get(0) == "K") {
 				  System.out.println(Clouds.remove(0));
 				  DealerTotal += 10;
@@ -188,7 +190,7 @@ public class BlackJack {
 			  }
 			//if the card is  a Block  card  
 		  }else if (arr[rand2] == ("Block")) {
-			  System.out.print("Dealers Cards are ");
+			  System.out.print("Dealer: Block ");
 			  if (Block.get(0) == "J" ||  Block.get(0) == "Q" || Block.get(0) == "K") {
 				  System.out.println(Block.remove(0));
 				  DealerTotal += 10;
@@ -205,18 +207,13 @@ public class BlackJack {
 			  System.out.println("Unknown" + rand2 );
 		  }
 		  
-		  System.out.println("The Dealer Total is " + DealerTotal);
+		  System.out.println("Dealer Total: " + DealerTotal);
+		  System.out.println();
 	  }else {
 		  Stand();
 		  return;
 	  }
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	    
   
   }
   public void Hit () {
@@ -224,7 +221,7 @@ public class BlackJack {
 		  int rand1 = random.nextInt(3) + 1;
 		  
 		  if(arr[rand1] == ("Spades")) {
-			  System.out.print("Your cards are Spades ");
+			  System.out.print("You: Spades ");
 			  //check if they picked K, Q or J 
 			  if (Spades.get(0) == "J" ||  Spades.get(0) == "Q" || Spades.get(0) == "K") {
 				  System.out.println(Spades.remove(0));
@@ -241,7 +238,7 @@ public class BlackJack {
 			  
 		  //if the card is  a Hearts  card
 		  }else if (arr[rand1] == ("Hearts")) {
-			  System.out.print("Your cards are Hearts ");
+			  System.out.print("You: Hearts ");
 			  if (Hearts.get(0) == "J" ||  Hearts.get(0) == "Q" || Hearts.get(0) == "K") {
 				  System.out.println(Hearts.remove(0));
 				  PlayerTotal += 10;
@@ -254,7 +251,7 @@ public class BlackJack {
 			  }
 			//if the card is  a Cloud  card  
 		  }else if (arr[rand1] == ("Clouds")) {
-			  System.out.print("Your cards are Clouds ");
+			  System.out.print("You: Clouds ");
 			  if (Clouds.get(0) == "J" ||  Clouds.get(0) == "Q" || Clouds.get(0) == "K") {
 				  System.out.println(Clouds.remove(0));
 				  PlayerTotal += 10;
@@ -268,7 +265,7 @@ public class BlackJack {
 			  }
 			//if the card is  a Block  card  
 		  }else if (arr[rand1] == ("Block")) {
-			  System.out.print("Your cards are Block ");
+			  System.out.print("You: Block ");
 			  if (Block.get(0) == "J" ||  Block.get(0) == "Q" || Block.get(0) == "K") {
 				  System.out.println(Block.remove(0));
 				  PlayerTotal += 10;
@@ -285,11 +282,16 @@ public class BlackJack {
 			  System.out.println("Unknown" + rand1 );
 		  }
 		  
-		  System.out.println("Your New Total is " + PlayerTotal );
+		  System.out.println("Your New Total: " + PlayerTotal );
+		  //check if player Total became more than 21 after hit. if it did, then call the Stand function
 		  if (PlayerTotal >= 21) {
 			  Stand();
 		  }
+		
+		  
+	  //if player Total is 21 
 	  }else if (PlayerTotal == 21) {
+		  Dealer();
 		  System.out.println("You Won");
 	  }else {
 		  Stand();
@@ -300,9 +302,16 @@ public class BlackJack {
   }
   
   public void Stand () {
+	  
+	  
+	  while (DealerTotal < 16 && DealerTotal < PlayerTotal ) {
+		  Dealer();
+	  }
+	  
+	  
 	 if (DealerTotal > PlayerTotal ) {
 		 if (DealerTotal <= 21) {
-			 System.out.println("Busted");
+			 System.out.println("Busted hehe ");
 		 }else if (DealerTotal  > 21) {
 			 if (PlayerTotal > 21) {
 				 System.out.println("Push");
@@ -318,7 +327,7 @@ public class BlackJack {
 			 if (DealerTotal > 21) {
 				 System.out.println("Push");
 			 }else if(DealerTotal <= 21) {
-				 System.out.println("Busted");
+				 System.out.println("Busted hehe ");
 			 }
 		 }
 	 }else if (DealerTotal == PlayerTotal ) {
