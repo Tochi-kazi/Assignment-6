@@ -1,6 +1,10 @@
+/**
+ * Name: Tochi Iroakazi
+ * Class: ICS4U
+ * Defintion: This Program runs the game of 21..
+ */
 
 import java.util.*;
-
 
 public class MainJAck {
  
@@ -18,20 +22,9 @@ public class MainJAck {
    	     //myCard.Dealer();
    	     return;
     }
+    //add a recursioon 
     HitStand(myCard);
-    
-    /**
-	if (scanner.next().equals("hit")) {
-	  myCard.Hit();
-	  HitStand(myCard);
-	}else if (scanner.next().equals("stand")) {
-	  System.out.println("not");
-	  myCard.Stand();
-	  myCard.Dealer();
-	}else {
-		System.out.println("Invalid Input");
-	}
-	HitStand(myCard); */
+
   }
  public static void main(String[] args) {
 	 System.out.println("Type in '1' for hit and '2' to stand");
