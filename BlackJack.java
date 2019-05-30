@@ -1,3 +1,10 @@
+/**
+ * Name: Tochi Iroakazi
+ * Class: ICS4U
+ * Defintion: This Program runs the Game of 21.
+ */
+
+
 import java.util.*;
 
 public class BlackJack {
@@ -11,60 +18,60 @@ public class BlackJack {
  
  
   Random random = new Random();
- 
-  //System.out.println(rand1);
-  int rand2 =  random.nextInt(3) + 1;
   
-  //System.out.println(rand2);
-  
-  
+
   int count = 0;
   int PlayerTotal;
   int DealerTotal;
- 
-  //assign dealers cards
-  String dealer1;
-  String dealer2;
-  String dealer3;
- 
-  //assign players cards
-  String player1;
-  String player2;
-  String player3;
- 
-  // dont forget to shuffle each time after called
+  
+  // shuffle the ArrayList 
   public void shuffle () {
   
     Collections.shuffle(Hearts);
     Collections.shuffle(Spades);
     Collections.shuffle(Clouds);
     Collections.shuffle(Block);
-    
-    /**
-    System.out.println(Hearts);
-    System.out.println(Spades);
-    System.out.println(Clouds);
-    System.out.println(Block);
-    */
-  
-  
   }
  
   public void push(String num) {
-   Hearts.add(num);
-   Spades.add(num);
-   Clouds.add(num);
-   Block.add(num);
-  
+	  //add numbers into the ArrayList for Hearts, Spades, Clouds and Block.
+	   Hearts.add(num);
+	   Spades.add(num);
+	   Clouds.add(num);
+	   Block.add(num);
+
   }
- 
-  public void clear () {
-  
+
+
+  public int getAceValue() { 
+    System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );
+    Scanner scanner = new Scanner(System.in);
+    int myValue = scanner.nextInt();
+    int one = 1;
+    int eleven = 11;
+    //System.out.println(myValue);
+    
+    while (myValue !=  1 && myValue != 11) {
+    	System.out.println(myValue);
+    	System.out.println("Make sure I'm in the right loop");
+    	System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );
+    	scanner = new Scanner(System.in);
+    	myValue = scanner.nextInt();
+    } 
+    return myValue; 
+    /**
+    if (myValue !=  1 || myValue != 11){
+    	System.out.println(myValue);
+    	getAceValue();
+    }
+    return myValue; */
   }
   
   //showing players cards
   public void Player() {
 	  int rand1 = random.nextInt(3) + 1;
+	  //int acevalue = 1;
+	  //Scanner scanner = new Scanner(System.in);
 
 	  
 	  if(arr[rand1] == ("Spades")) {
@@ -74,7 +81,9 @@ public class BlackJack {
 			  System.out.println(Spades.remove(0));
 			  PlayerTotal += 10;
 		  }else if( Spades.get(0) == "A"){
-			  PlayerTotal += 1;
+			//ask the user what value they want the ace to stand for
+			  int aceValue = getAceValue();
+			  PlayerTotal += aceValue;
 			  System.out.println(Spades.remove(0));
 		  
 		  }else {
@@ -90,7 +99,8 @@ public class BlackJack {
 			  System.out.println(Hearts.remove(0));
 			  PlayerTotal += 10;
 		  }else if (Hearts.get(0) == "A") {
-			  PlayerTotal += 1;
+			  int acevalue = getAceValue();
+			  PlayerTotal += acevalue;
 			  System.out.println(Hearts.remove(0));  
 		  }else {
 			  PlayerTotal += Integer.parseInt(Hearts.get(0));
@@ -103,8 +113,9 @@ public class BlackJack {
 			  System.out.println(Clouds.remove(0));
 			  PlayerTotal += 10;
 		  }else if (Clouds.get(0) ==  "A") {
+			  int acevalue = getAceValue();
+			  PlayerTotal += acevalue;
 			  System.out.println(Clouds.remove(0));
-			  PlayerTotal += 1;
 			  
 		  }else {
 			  PlayerTotal += Integer.parseInt(Clouds.get(0));
@@ -117,8 +128,9 @@ public class BlackJack {
 			  System.out.println(Block.remove(0));
 			  PlayerTotal += 10;
 		  }else if (Block.get(0) ==  "A") {
-			  System.out.println(Block.remove(0));
-			  PlayerTotal += 1;
+			  int acevalue = getAceValue();
+			  PlayerTotal += acevalue;
+			  System.out.println(Block.remove(0));;
 			  
 		  }else {
 			  PlayerTotal += Integer.parseInt(Block.get(0));
@@ -140,6 +152,7 @@ public class BlackJack {
 	    
   
   }
+  //giving the Dealer a card.
   public void Dealer () {
 	 
 	  int rand2 = random.nextInt(3) + 1;
@@ -152,15 +165,6 @@ public class BlackJack {
 				  System.out.println(Spades.remove(0));
 				  DealerTotal += 10;
 			  }else if( Spades.get(0) == "A"){
-				  System.out.println("What value do you want your Ace to stand for ?" );
-				  Scanner scanner = new Scanner(System.in);
-				  int acevalue = scanner.nextInt();
-				  while (acevalue !=  1 || acevalue != 2  ||  acevalue.hasNext()) {
-					  System.out.println("Please, tyep in a valid number: " );
-					  acevalue = scanner.nextInt();
-				  }
-				  
-				  
 				  DealerTotal += 1;
 				  System.out.println(Spades.remove(0));
 			  
@@ -221,12 +225,12 @@ public class BlackJack {
 	  //if the dealer total is greater than 16 then call the stand.
 	  }else {
 		  Stand();
-		  //return;
 	  }
 	    
   
   }
   public void Hit () {
+	  //pick another card for the user 
 	  if (PlayerTotal < 21) {
 		  int rand1 = random.nextInt(3) + 1;
 		  
@@ -297,13 +301,6 @@ public class BlackJack {
 		  if (PlayerTotal >= 21) {
 			  Stand();
 		  }
-		
-		  
-	  //if player Total is 21
-		  /**
-	  }else if (PlayerTotal == 21) {
-		  Dealer();
-		  System.out.println("You Won"); */
 	  }else {
 		  Stand();
 	  }
@@ -324,7 +321,7 @@ public class BlackJack {
 	  //check for who won the game or a draw.
 	 if (DealerTotal > PlayerTotal ) {
 		 if (DealerTotal <= 21) {
-			 System.out.println("Busted hehe ");
+			 System.out.println("Busted, Hehe ");
 		 }else if (DealerTotal  > 21) {
 			 if (PlayerTotal > 21) {
 				 System.out.println("Push");
@@ -340,7 +337,7 @@ public class BlackJack {
 			 if (DealerTotal > 21) {
 				 System.out.println("Push");
 			 }else if(DealerTotal <= 21) {
-				 System.out.println("Busted hehe ");
+				 System.out.println("Busted, Hehe ");
 			 }
 		 }
 	 }else if (DealerTotal == PlayerTotal ) {
