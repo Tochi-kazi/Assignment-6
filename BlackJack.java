@@ -18,6 +18,8 @@ public class BlackJack {
  
  
   Random random = new Random();
+  int rand2;
+  int rand1;
   
 
   int count = 0;
@@ -42,34 +44,21 @@ public class BlackJack {
 
   }
 
-
+  //ask user for the value of ace 
   public int getAceValue() { 
     System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );
     Scanner scanner = new Scanner(System.in);
-    int myValue = scanner.nextInt();
-    int one = 1;
-    int eleven = 11;
-    //System.out.println(myValue);
+    int myValue = scanner.nextInt(); 
     
-    while (myValue !=  1 && myValue != 11) {
-    	System.out.println(myValue);
-    	System.out.println("Make sure I'm in the right loop");
-    	System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );
-    	scanner = new Scanner(System.in);
-    	myValue = scanner.nextInt();
-    } 
-    return myValue; 
-    /**
-    if (myValue !=  1 || myValue != 11){
-    	System.out.println(myValue);
+    if (myValue !=  1 && myValue != 11){
     	getAceValue();
     }
-    return myValue; */
+    return myValue; 
   }
   
   //showing players cards
   public void Player() {
-	  int rand1 = random.nextInt(3) + 1;
+	  rand1 = random.nextInt(3) + 1;
 	  //int acevalue = 1;
 	  //Scanner scanner = new Scanner(System.in);
 
@@ -155,7 +144,7 @@ public class BlackJack {
   //giving the Dealer a card.
   public void Dealer () {
 	 
-	  int rand2 = random.nextInt(3) + 1;
+	  rand2 = random.nextInt(3) + 1;
 	  
 	  if (DealerTotal <= 16) {
 		  if(arr[rand2] == ("Spades")) {
@@ -165,7 +154,8 @@ public class BlackJack {
 				  System.out.println(Spades.remove(0));
 				  DealerTotal += 10;
 			  }else if( Spades.get(0) == "A"){
-				  DealerTotal += 1;
+				  int aceValue = getAceValue();
+				  DealerTotal += aceValue;
 				  System.out.println(Spades.remove(0));
 			  
 			  }else {
@@ -181,7 +171,8 @@ public class BlackJack {
 				  System.out.println(Hearts.remove(0));
 				  DealerTotal += 10;
 			  }else if (Hearts.get(0) == "A") {
-				  DealerTotal += 1;
+				  int aceValue = getAceValue();
+				  DealerTotal += aceValue;
 				  System.out.println(Hearts.remove(0));  
 			  }else {
 				  DealerTotal += Integer.parseInt(Hearts.get(0));
@@ -194,8 +185,9 @@ public class BlackJack {
 				  System.out.println(Clouds.remove(0));
 				  DealerTotal += 10;
 			  }else if (Clouds.get(0) ==  "A") {
+				  int aceValue = getAceValue();
+				  DealerTotal += aceValue;
 				  System.out.println(Clouds.remove(0));
-				  DealerTotal += 1;
 				  
 			  }else {
 				  DealerTotal += Integer.parseInt(Clouds.get(0));
@@ -208,8 +200,9 @@ public class BlackJack {
 				  System.out.println(Block.remove(0));
 				  DealerTotal += 10;
 			  }else if (Block.get(0) ==  "A") {
+				  int aceValue = getAceValue();
+				  DealerTotal += aceValue;
 				  System.out.println(Block.remove(0));
-				  DealerTotal += 1;
 				  
 			  }else {
 				  DealerTotal += Integer.parseInt(Block.get(0));
