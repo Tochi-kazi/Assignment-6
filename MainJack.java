@@ -17,7 +17,6 @@ public class MainJAck {
    	     HitStand(myCard);
    	     
      case 2:
-    	 //myCard.Dealer();
     	 myCard.Stand();
    	     //myCard.Dealer();
    	     return;
