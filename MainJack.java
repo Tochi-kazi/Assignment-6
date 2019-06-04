@@ -17,8 +17,9 @@ public class MainJAck {
    	     HitStand(myCard);
    	     
      case 2:
+    	 //to bring shout the dealers second card
+    	 //myCard.Dealer();
     	 myCard.Stand();
-   	     //myCard.Dealer();
    	     return;
     }
     //add a recursioon 
@@ -26,9 +27,9 @@ public class MainJAck {
 
   }
  public static void main(String[] args) {
+	 
 	 System.out.println("Type in '1' for hit and '2' to stand");
-  //Scanner scanner = new Scanner(System.in);
-  BlackJack card = new BlackJack ();
+	 BlackJack card = new BlackJack ();
   
   
   //push the letter K,Q,J and A into the arrayList
