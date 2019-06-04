@@ -12,9 +12,9 @@ public class BlackJack {
   ArrayList<String> Hearts = new ArrayList<String> ();
   ArrayList<String> Spades = new ArrayList<String> ();
   ArrayList<String> Clouds = new ArrayList<String> ();
-  ArrayList<String> Block = new ArrayList<String> ();
+  ArrayList<String> Clobs = new ArrayList<String> ();
  
-  String[] arr = {"Hearts", "Spades", "Clouds", "Block"};
+  String[] arr = {"Hearts", "Spades", "Clouds", "Clobs"};
  
  
   Random random = new Random();
@@ -32,15 +32,15 @@ public class BlackJack {
     Collections.shuffle(Hearts);
     Collections.shuffle(Spades);
     Collections.shuffle(Clouds);
-    Collections.shuffle(Block);
+    Collections.shuffle(Clobs);
   }
  
   public void push(String num) {
-	  //add numbers into the ArrayList for Hearts, Spades, Clouds and Block.
+	  //add numbers into the ArrayList for Hearts, Spades, Clouds and Clobs.
 	   Hearts.add(num);
 	   Spades.add(num);
 	   Clouds.add(num);
-	   Block.add(num);
+	   Clobs.add(num);
 
   }
 
@@ -48,9 +48,14 @@ public class BlackJack {
   public int getAceValue() { 
     System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );
     Scanner scanner = new Scanner(System.in);
-    int myValue = scanner.nextInt(); 
     
-    if (myValue !=  1 && myValue != 11){
+    if (scanner.hasNextInt() ){
+    	if (scanner.nextInt() != 1 && scanner.nextInt() != 11) {
+    		getAceValue();
+    	}else {
+    		 myValue =  Integer.parseInt(scanner.next());
+    	}
+    }else {
     	getAceValue();
     }
     return myValue; 
@@ -110,20 +115,20 @@ public class BlackJack {
 			  PlayerTotal += Integer.parseInt(Clouds.get(0));
 			  System.out.println(Clouds.remove(0));  
 		  }
-		//if the card is  a Block  card  
-	  }else if (arr[rand1] == ("Block")) {
-		  System.out.print("You: Block ");
-		  if (Block.get(0) == "J" ||  Block.get(0) == "Q" || Block.get(0) == "K") {
-			  System.out.println(Block.remove(0));
+		//if the card is  a Clobs  card  
+	  }else if (arr[rand1] == ("Clobs")) {
+		  System.out.print("You: Clobs ");
+		  if (Clobs.get(0) == "J" ||  Clobs.get(0) == "Q" || Clobs.get(0) == "K") {
+			  System.out.println(Clobs.remove(0));
 			  PlayerTotal += 10;
-		  }else if (Block.get(0) ==  "A") {
+		  }else if (Clobs.get(0) ==  "A") {
 			  int acevalue = getAceValue();
 			  PlayerTotal += acevalue;
-			  System.out.println(Block.remove(0));;
+			  System.out.println(Clobs.remove(0));
 			  
 		  }else {
-			  PlayerTotal += Integer.parseInt(Block.get(0));
-			  System.out.println(Block.remove(0));  
+			  PlayerTotal += Integer.parseInt(Clobs.get(0));
+			  System.out.println(Clobs.remove(0));  
 		  }
 		  
 	  }else {
@@ -143,83 +148,71 @@ public class BlackJack {
   }
   //giving the Dealer a card.
   public void Dealer () {
-	 
 	  rand2 = random.nextInt(3) + 1;
-	  
-	  if (DealerTotal <= 16) {
-		  if(arr[rand2] == ("Spades")) {
-			  System.out.print("Dealers: Spades ");
-			  //check if they picked K, Q or J 
-			  if (Spades.get(0) == "J" ||  Spades.get(0) == "Q" || Spades.get(0) == "K") {
-				  System.out.println(Spades.remove(0));
-				  DealerTotal += 10;
-			  }else if( Spades.get(0) == "A"){
-				  int aceValue = getAceValue();
-				  DealerTotal += aceValue;
-				  System.out.println(Spades.remove(0));
-			  
-			  }else {
-				  DealerTotal += Integer.parseInt(Spades.get(0));
-				  System.out.println(Spades.remove(0));
-			  }
-			  
-			  
-		  //if the card is  a Hearts  card
-		  }else if (arr[rand2] == ("Hearts")) {
-			  System.out.print("Dealer: Hearts ");
-			  if (Hearts.get(0) == "J" ||  Hearts.get(0) == "Q" || Hearts.get(0) == "K") {
-				  System.out.println(Hearts.remove(0));
-				  DealerTotal += 10;
-			  }else if (Hearts.get(0) == "A") {
-				  int aceValue = getAceValue();
-				  DealerTotal += aceValue;
-				  System.out.println(Hearts.remove(0));  
-			  }else {
-				  DealerTotal += Integer.parseInt(Hearts.get(0));
-				  System.out.println(Hearts.remove(0));
-			  }
-			//if the card is  a Cloud  card  
-		  }else if (arr[rand2] == ("Clouds")) {
-			  System.out.print("Dealer: Clouds ");
-			  if (Clouds.get(0) == "J" ||  Clouds.get(0) == "Q" || Clouds.get(0) == "K") {
-				  System.out.println(Clouds.remove(0));
-				  DealerTotal += 10;
-			  }else if (Clouds.get(0) ==  "A") {
-				  int aceValue = getAceValue();
-				  DealerTotal += aceValue;
-				  System.out.println(Clouds.remove(0));
-				  
-			  }else {
-				  DealerTotal += Integer.parseInt(Clouds.get(0));
-				  System.out.println(Clouds.remove(0));  
-			  }
-			//if the card is  a Block  card  
-		  }else if (arr[rand2] == ("Block")) {
-			  System.out.print("Dealer: Block ");
-			  if (Block.get(0) == "J" ||  Block.get(0) == "Q" || Block.get(0) == "K") {
-				  System.out.println(Block.remove(0));
-				  DealerTotal += 10;
-			  }else if (Block.get(0) ==  "A") {
-				  int aceValue = getAceValue();
-				  DealerTotal += aceValue;
-				  System.out.println(Block.remove(0));
-				  
-			  }else {
-				  DealerTotal += Integer.parseInt(Block.get(0));
-				  System.out.println(Block.remove(0));  
-			  }
-			  
+	  if(arr[rand2] == ("Spades")) {
+		  System.out.print("Dealers: Spades ");
+		  //check if they picked K, Q or J 
+		  if (Spades.get(0) == "J" ||  Spades.get(0) == "Q" || Spades.get(0) == "K") {
+			  System.out.println(Spades.remove(0));
+			  DealerTotal += 10;
+		  }else if( Spades.get(0) == "A"){
+			  DealerTotal += 1;
+			  System.out.println(Spades.remove(0));
+		  
 		  }else {
-			  System.out.println("Unknown" + rand2 );
+			  DealerTotal += Integer.parseInt(Spades.get(0));
+			  System.out.println(Spades.remove(0));
 		  }
 		  
-		  System.out.println("Dealer Total: " + DealerTotal);
-		  System.out.println();
-	  //if the dealer total is greater than 16 then call the stand.
+		  
+	  //if the card is  a Hearts  card
+	  }else if (arr[rand2] == ("Hearts")) {
+		  System.out.print("Dealer: Hearts ");
+		  if (Hearts.get(0) == "J" ||  Hearts.get(0) == "Q" || Hearts.get(0) == "K") {
+			  System.out.println(Hearts.remove(0));
+			  DealerTotal += 10;
+		  }else if (Hearts.get(0) == "A") {
+			  DealerTotal += 1;
+			  System.out.println(Hearts.remove(0));  
+		  }else {
+			  DealerTotal += Integer.parseInt(Hearts.get(0));
+			  System.out.println(Hearts.remove(0));
+		  }
+		//if the card is  a Cloud  card  
+	  }else if (arr[rand2] == ("Clouds")) {
+		  System.out.print("Dealer: Clouds ");
+		  if (Clouds.get(0) == "J" ||  Clouds.get(0) == "Q" || Clouds.get(0) == "K") {
+			  System.out.println(Clouds.remove(0));
+			  DealerTotal += 10;
+		  }else if (Clouds.get(0) ==  "A") {
+			  DealerTotal += 1;
+			  System.out.println(Clouds.remove(0));
+			  
+		  }else {
+			  DealerTotal += Integer.parseInt(Clouds.get(0));
+			  System.out.println(Clouds.remove(0));  
+		  }
+		//if the card is  a Clobs  card  
+	  }else if (arr[rand2] == ("Clobs")) {
+		  System.out.print("Dealer: Clobs ");
+		  if (Clobs.get(0) == "J" ||  Clobs.get(0) == "Q" || Clobs.get(0) == "K") {
+			  System.out.println(Clobs.remove(0));
+			  DealerTotal += 10;
+		  }else if (Clobs.get(0) ==  "A") {
+			  DealerTotal += 1;
+			  System.out.println(Clobs.remove(0));
+			  
+		  }else {
+			  DealerTotal += Integer.parseInt(Clobs.get(0));
+			  System.out.println(Clobs.remove(0));  
+		  }
+		  
 	  }else {
-		  Stand();
+		  System.out.println("Unknown" + rand2 );
 	  }
-	    
+	  
+	  System.out.println("Dealer Total: " + DealerTotal);
+	  System.out.println();
   
   }
   public void Hit () {
@@ -234,7 +227,8 @@ public class BlackJack {
 				  System.out.println(Spades.remove(0));
 				  PlayerTotal += 10;
 			  }else if( Spades.get(0) == "A"){
-				  PlayerTotal += 1;
+				  int acevalue = getAceValue();
+				  PlayerTotal += acevalue;
 				  System.out.println(Spades.remove(0));
 			  
 			  }else {
@@ -250,8 +244,9 @@ public class BlackJack {
 				  System.out.println(Hearts.remove(0));
 				  PlayerTotal += 10;
 			  }else if (Hearts.get(0) == "A") {
-				  PlayerTotal += 1;
-				  System.out.println(Hearts.remove(0));  
+				  int acevalue = getAceValue();
+				  PlayerTotal += acevalue;
+				  System.out.println(Hearts.remove(0));;  
 			  }else {
 				  PlayerTotal += Integer.parseInt(Hearts.get(0));
 				  System.out.println(Hearts.remove(0));
@@ -263,26 +258,28 @@ public class BlackJack {
 				  System.out.println(Clouds.remove(0));
 				  PlayerTotal += 10;
 			  }else if (Clouds.get(0) ==  "A") {
+				  int acevalue = getAceValue();
+				  PlayerTotal += acevalue;
 				  System.out.println(Clouds.remove(0));
-				  PlayerTotal += 1;
 				  
 			  }else {
 				  PlayerTotal += Integer.parseInt(Clouds.get(0));
 				  System.out.println(Clouds.remove(0));  
 			  }
-			//if the card is  a Block  card  
-		  }else if (arr[rand1] == ("Block")) {
-			  System.out.print("You: Block ");
-			  if (Block.get(0) == "J" ||  Block.get(0) == "Q" || Block.get(0) == "K") {
-				  System.out.println(Block.remove(0));
+			//if the card is  a Clobs  card  
+		  }else if (arr[rand1] == ("Clobs")) {
+			  System.out.print("You: Clobs ");
+			  if (Clobs.get(0) == "J" ||  Clobs.get(0) == "Q" || Clobs.get(0) == "K") {
+				  System.out.println(Clobs.remove(0));
 				  PlayerTotal += 10;
-			  }else if (Block.get(0) ==  "A") {
-				  System.out.println(Block.remove(0));
-				  PlayerTotal += 1;
+			  }else if (Clobs.get(0) ==  "A") {
+				  int acevalue = getAceValue();
+				  PlayerTotal += acevalue;
+				  System.out.println(Clobs.remove(0));
 				  
 			  }else {
-				  PlayerTotal += Integer.parseInt(Block.get(0));
-				  System.out.println(Block.remove(0));  
+				  PlayerTotal += Integer.parseInt(Clobs.get(0));
+				  System.out.println(Clobs.remove(0));  
 			  }
 			  
 		  }else {
@@ -291,7 +288,8 @@ public class BlackJack {
 		  
 		  System.out.println("Your New Total: " + PlayerTotal );
 		  //check if player Total became more than 21 after hit. if it did, then call the Stand function
-		  if (PlayerTotal >= 21) {
+		  if (PlayerTotal > 21) {
+			  Dealer();
 			  Stand();
 		  }
 	  }else {
@@ -302,39 +300,43 @@ public class BlackJack {
   }
   
   public void Stand () {
-	  
-	  //call the dealer function for the second card
 	  Dealer();
-	  
 	  //keep hitting the dealer as long as the dealersTotal is less than 16, less than the playerTotal and the playerTotal is less than 21
-	  while (DealerTotal < 16 && DealerTotal < PlayerTotal && PlayerTotal < 21) {
+	  while  (DealerTotal < 16 && DealerTotal < PlayerTotal && PlayerTotal < 21){
 		  Dealer();
 	  }
 	  
 	  //check for who won the game or a draw.
 	 if (DealerTotal > PlayerTotal ) {
 		 if (DealerTotal <= 21) {
-			 System.out.println("Busted, Hehe ");
+			 System.out.println("Lose, Hehe ");
+			 return;
 		 }else if (DealerTotal  > 21) {
 			 if (PlayerTotal > 21) {
 				 System.out.println("Push");
+				 return;
 			 }else if (PlayerTotal <= 21) {
 				 System.out.println("You Won");
+				 return;
 			 }
 		 }
 		 
 	 }else if (PlayerTotal > DealerTotal) {
 		 if (PlayerTotal <= 21) {
 			 System.out.println("You Won");
+			 return;
 		 }else if (PlayerTotal > 21) {
 			 if (DealerTotal > 21) {
 				 System.out.println("Push");
+				 return;
 			 }else if(DealerTotal <= 21) {
-				 System.out.println("Busted, Hehe ");
+				 System.out.println("Lose, Hehe ");
+				 return;
 			 }
 		 }
 	 }else if (DealerTotal == PlayerTotal ) {
 		 System.out.println("Push");
+		 return;
 	 
 		 
 	 }
