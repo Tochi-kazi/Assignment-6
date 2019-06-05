@@ -6,23 +6,25 @@
 
 import java.util.*;
 
-public class MainJAck {
+public class MainJack {
  
   public static void HitStand (BlackJack myCard) {
     Scanner scanner = new Scanner(System.in);
     //call the hit function to add another card for the player
-    switch (scanner.nextInt()){
-     case 1:
+    switch (scanner.next()){
+     case "1":
     	 myCard.Hit();
    	     HitStand(myCard);
    	     
-     case 2:
-    	 //to bring shout the dealers second card
-    	 //myCard.Dealer();
+     case "2":
     	 myCard.Stand();
    	     return;
+   	     
+   	 default:
+   		System.out.println("Type in '1' for hit and '2' to stand");
+   		HitStand(myCard);		 
     }
-    //add a recursioon 
+    //add a recursion 
     HitStand(myCard);
 
   }
