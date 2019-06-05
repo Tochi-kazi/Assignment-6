@@ -48,18 +48,15 @@ public class BlackJack {
   public int getAceValue() { 
     System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );
     Scanner scanner = new Scanner(System.in);
-    
-    if (scanner.hasNextInt() ){
-    	if (scanner.nextInt() != 1 && scanner.nextInt() != 11) {
-    		getAceValue();
-    	}else {
-    		 myValue =  Integer.parseInt(scanner.next());
-    	}
-    }else {
-    	getAceValue();
+    String myValue = scanner.next();
+    //while the ace acevale value does not equal 1 or 11, keeping asking for an ace value.
+    while (!myValue.contentEquals("1") && !myValue.contentEquals("11")) {
+    	System.out.println("What value do you want your Ace to stand for ? (1 or 11)" );	
+    	scanner = new Scanner(System.in);
+    	myValue = scanner.next();
     }
-    return myValue; 
-  }
+    return Integer.parseInt(myValue);
+  } 
   
   //showing players cards
   public void Player() {
@@ -346,4 +343,3 @@ public class BlackJack {
  
  
 }
-
