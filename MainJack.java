@@ -6,26 +6,41 @@
 
 import java.util.*;
 
-public class MainJack {
+public class MainJAck {
  
   public static void HitStand (BlackJack myCard) {
     Scanner scanner = new Scanner(System.in);
     //call the hit function to add another card for the player
-    switch (scanner.next()){
-     case "1":
+    /**
+    if (scanner.next().contentEquals("1")) {
     	 myCard.Hit();
-   	     HitStand(myCard);
-   	     
-     case "2":
-    	 myCard.Stand();
-   	     return;
-   	     
-   	 default:
-   		System.out.println("Type in '1' for hit and '2' to stand");
-   		HitStand(myCard);		 
+  	     HitStand(myCard);
+  	     return;
+    }else if (scanner.next().contentEquals("2")) {
+    	System.out.println("You typed 2");
+   	    System.out.println(myCard.Stand());
+  	     return;
+    }else {
+    	System.out.println("Type in '1' for hit and '2' to stand");
+   		HitStand(myCard);	
+    }*/
+	
+    System.out.println("Type in '1' for hit and '2' to stand");
+    String input = "";
+    while (!(input = scanner.next()).equals("2")) {
+    	if (input.equals("1")) {
+    	    System.out.println("Hit!");    	
+       	 	myCard.Hit();
+    	    System.out.println("Done hit!");	
+    	}
+        System.out.println("Type in '1' for hit and '2' to stand");
     }
-    //add a recursion 
-    HitStand(myCard);
+
+    	 scanner.close();
+    	 System.out.println("Stand! You typed 2");
+    	 System.out.println(myCard.Stand());
+
+    return;
 
   }
  public static void main(String[] args) {
