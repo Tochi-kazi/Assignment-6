@@ -284,61 +284,68 @@ public class BlackJack {
 		  }
 		  
 		  System.out.println("Your New Total: " + PlayerTotal );
-		  //check if player Total became more than 21 after hit. if it did, then call the Stand function
-		  if (PlayerTotal > 21) {
-			  Dealer();
-			  Stand();
-		  }
+		  //check if player Total became more than 21 after hit. if it did, then call the Stand function 
 	  }else {
-		  Stand();
+//		  System.out.println(Stand() + "diff stuff ");
+		  System.out.println("You already busted...what are you thining? ");
 	  }
 
 	  
   }
   
-  public void Stand () {
+  public String Stand () {
 	  
+	  System.out.println("The Dealers Second card");
 	  Dealer();
 	  //keep hitting the dealer as long as the dealersTotal is less than 16, less than the playerTotal and the playerTotal is less than 21
 	  while  (DealerTotal < 16 && DealerTotal < PlayerTotal && PlayerTotal < 21){
+		  System.out.println("Here we go again");
 		  Dealer();
 	  }
 	  
 	  //check for who won the game or a draw.
 	 if (DealerTotal > PlayerTotal ) {
 		 if (DealerTotal <= 21) {
-			 System.out.println("Lose, Hehe ");
-			 return;
+			 //System.out.println("Lose, Hehe ");
+			 return "Lose, Hehe ";
 		 }else if (DealerTotal  > 21) {
 			 if (PlayerTotal > 21) {
-				 System.out.println("Push");
-				 return;
+				 //System.out.println("Push");
+				 return "Push";
 			 }else if (PlayerTotal <= 21) {
-				 System.out.println("You Won");
-				 return;
+				 //System.out.println("You Won");
+				 return "You .Won";
 			 }
+		 }else {
+			 return "Cant  find ";
 		 }
 		 
 	 }else if (PlayerTotal > DealerTotal) {
 		 if (PlayerTotal <= 21) {
-			 System.out.println("You Won");
-			 return;
+			 //System.out.println("You Won");
+			 return "You Won";
 		 }else if (PlayerTotal > 21) {
 			 if (DealerTotal > 21) {
-				 System.out.println("Push");
-				 return;
+				 //System.out.println("Push");
+				 return "Push";
 			 }else if(DealerTotal <= 21) {
-				 System.out.println("Lose, Hehe ");
-				 return;
+				 //System.out.println("Lose, Hehe ");
+				 return "Lose, Hehe ";
 			 }
 		 }
 	 }else if (DealerTotal == PlayerTotal ) {
-		 System.out.println("Push");
-		 return;
+		 //System.out.println("Push");
+		 return "Push";
 	 
 		 
+	 }else {
+		 return "Cant find ";
 	 }
+	 
+	 return "Done";
   }
+  
+  
  
  
  
