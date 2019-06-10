@@ -286,8 +286,10 @@ public class BlackJack {
 		  System.out.println("Your New Total: " + PlayerTotal );
 		  //check if player Total became more than 21 after hit. if it did, then call the Stand function 
 	  }else {
-//		  System.out.println(Stand() + "diff stuff ");
-		  System.out.println("You already busted...what are you thining? ");
+		  //System.out.println(Stand() + "diff stuff ");
+		  System.out.println("You already busted...Type '2' ");
+		  return;
+		  //System.out.println(Stand() + "diff stuff ");
 	  }
 
 	  
@@ -314,7 +316,7 @@ public class BlackJack {
 				 return "Push";
 			 }else if (PlayerTotal <= 21) {
 				 //System.out.println("You Won");
-				 return "You .Won";
+				 return "You Won";
 			 }
 		 }else {
 			 return "Cant  find ";
@@ -330,7 +332,7 @@ public class BlackJack {
 				 return "Push";
 			 }else if(DealerTotal <= 21) {
 				 //System.out.println("Lose, Hehe ");
-				 return "Lose, Hehe ";
+				 return "Bust, Hehe ";
 			 }
 		 }
 	 }else if (DealerTotal == PlayerTotal ) {
