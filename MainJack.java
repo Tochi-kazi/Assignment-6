@@ -11,34 +11,20 @@ public class MainJAck {
   public static void HitStand (BlackJack myCard) {
     Scanner scanner = new Scanner(System.in);
     //call the hit function to add another card for the player
-    /**
-    if (scanner.next().contentEquals("1")) {
-    	 myCard.Hit();
-  	     HitStand(myCard);
-  	     return;
-    }else if (scanner.next().contentEquals("2")) {
-    	System.out.println("You typed 2");
-   	    System.out.println(myCard.Stand());
-  	     return;
-    }else {
-    	System.out.println("Type in '1' for hit and '2' to stand");
-   		HitStand(myCard);	
-    }*/
 	
-    System.out.println("Type in '1' for hit and '2' to stand");
+    System.out.println("Type '1' each time you want to hit and '2' to stand.");
     String input = "";
-    while (!(input = scanner.next()).equals("2")) {
+    while (!(input = scanner.next()).equals("2") ) {
     	if (input.equals("1")) {
     	    System.out.println("Hit!");    	
        	 	myCard.Hit();
-    	    System.out.println("Done hit!");	
+    	}else {
+    		System.out.println("Type in '1' for hit and '2' to stand. Try Again! ");
     	}
-        System.out.println("Type in '1' for hit and '2' to stand");
     }
-
-    	 scanner.close();
-    	 System.out.println("Stand! You typed 2");
-    	 System.out.println(myCard.Stand());
+	 scanner.close();
+	 System.out.println("Stand! You typed 2");
+	 System.out.println(myCard.Stand()); 
 
     return;
 
